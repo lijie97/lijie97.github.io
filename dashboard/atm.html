@@ -51,7 +51,7 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="mois.html">
+            <a class="nav-link" href="mois.html">
               <span data-feather="file"></span>
               Histogram des Accidents par mois
             </a>
@@ -75,7 +75,7 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="atm.html">
+            <a class="nav-link active" href="atm.html">
               <span data-feather="file"></span>
               Histogram des Accidents par les conditions atmosphères
             </a>
@@ -99,24 +99,24 @@
       
 <script>
 
-  freq = {"1":4350,"2":3458,"3":4152,"4":4833,"5":5055,"6":5579,"7":5241,"8":4336,"9":5532,"10":5698,"11":4883,"12":4666};
-  grav = {"1":2.6131534613,"2":2.6170818976,"3":2.6397822806,"4":2.6259351426,"5":2.6571796655,"6":2.6147681771,"7":2.6600397367,"8":2.6478851205,"9":2.6259396907,"10":2.6347126058,"11":2.6495449863,"12":2.6440984738}
+  freq = {"Normale":36183,"Pluie légère":4689,"Temps couvert":1520,"Pluie forte":1019,"Temps éblouissant":778,"Neige - grêle":245,"Brouillard - fumée":183,"Autre":168,"Vent fort - tempête":88};
+  grav = {"Normale":2.6261779723,"Pluie légère":2.7132147602,"Pluie forte":2.7087141923,"Neige - grêle":2.6951949524,"Brouillard - fumée":2.6898907104,"Vent fort - tempête":2.5839015152,"Temps éblouissant":2.4649666422,"Temps couvert":2.6542577799,"Autre":2.7544642857};
   xfreq = Object.keys(freq);
   yfreq = Object.values(freq);
   xgrav = Object.keys(grav);
   ygrav = Object.values(grav);
 
   var trace1 = {
-      x:xfreq,
+      x: xfreq,
       y: yfreq,
-      name: 'Nombre',
+      name: 'yaxis data',
       type: 'bar'
     };
  
     var trace2 = {
-      x: xgrav,
+      x: xfreq,
       y: ygrav,
-      name: 'Gravitité',
+      name: 'yaxis2 data',
       yaxis: 'y2',
       type: 'line'
     };
@@ -124,8 +124,10 @@
     var data = [trace1, trace2];
 
     var layout = {
-      title: 'Histogramme des Accidents par mois',
+      title: 'Histogramme des Accidents par les conditions atmosphériques',
+      yaxis: { title: 'Nombre' },
       yaxis2: {
+        title: 'Gravitité moyenne',
         titlefont: { color: 'rgb(148, 103, 189)' },
         tickfont: { color: 'rgb(148, 103, 189)' },
         overlaying: 'y',
@@ -136,8 +138,7 @@
           size: 24
         },
         xref: 'paper',
-        x: 0.05,
-        showlegend: false
+        x: 0.05,    showlegend: false
     };
 
     

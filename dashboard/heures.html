@@ -65,6 +65,22 @@
             </a>
           </li>
         </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">
+              <span data-feather="file"></span>
+              Carte Chaleur
+            </a>
+          </li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="atm.html">
+              <span data-feather="file"></span>
+              Histogram des Accidents par les conditions atmosphères
+            </a>
+          </li>
+        </ul>
        </div>
     </nav>
   </div>
@@ -84,31 +100,50 @@
       
 <script>
  
-  json = {"17":4992,"18":4806,"16":4130,"19":3697,"15":3518,"8":3438,"14":3167,"12":3114,"9":2963,"11":2933,"13":2848,"10":2614,"20":2605,"7":2499,"21":1857,"22":1490,"23":1257,"6":1224,"1":882,"5":881,"2":640,"3":637,"4":571}
-  x = Object.keys(json);
-  y = Object.values(json);
+  freq = {"17":4992,"18":4806,"16":4130,"19":3697,"15":3517,"14":3167,"12":3114,"11":2933,"13":2848,"10":2614,"20":2605,"21":1857,"22":1490,"23":1257,"1":882,"0":512,"2":456}
+  grav = {"0":2.8777777778,"1":2.925452165,"2":2.9108500418,"10":2.5927673279,"11":2.5771285378,"12":2.6056073264,"13":2.6562486239,"14":2.6298335764,"15":2.6035660632,"16":2.6087906477,"17":2.5679769847,"18":2.5619287068,"19":2.6089895145,"20":2.6752105231,"21":2.7782822649,"22":2.8341917714,"23":2.8054903651}
+  xfreq = Object.keys(freq);
+  yfreq = Object.values(freq);
+
+  xgrav = Object.keys(grav);
+  ygrav = Object.values(grav);
+
+
+    var trace1 = {
+      x:xfreq,
+      y: yfreq,
+      name: 'Nombre',
+      type: 'scatter'
+    };
+ 
+    var trace2 = {
+      x: xgrav,
+      y: ygrav,
+      name: 'Gravitité moyenne',
+      yaxis: 'y2',
+      type: 'scatter'
+    };
+
+    var data = [trace1, trace2];
 
   var layout = {
-    title: {
-      text: 'Histogramme des Accidents par heures',
-      font: {
-        family: 'Courier New, monospace',
-        size: 24
-      },
-      xref: 'paper',
-      x: 0.05,
-    }
+    title: 'Histogramme des Accidents par heures',
+    yaxis2: {
+      titlefont: { color: 'rgb(148, 103, 189)' },
+      tickfont: { color: 'rgb(148, 103, 189)' },
+      overlaying: 'y',
+      side: 'right'
+    },
+    font: {
+      family: 'Courier New, monospace',
+      size: 24
+    },
+    xref: 'paper',
+    x: 0.05,
+    showlegend: false
   };
 
-  var data = [
-  {
-    x: x,
-    y: y,
-    type: 'bar'
-  }
-];
 Plotly.newPlot('myDiv', data, layout);
-
 </script>
         
 </body>

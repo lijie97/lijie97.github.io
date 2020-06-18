@@ -59,9 +59,25 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="heures.html">
+            <a class="nav-link" href="heures.html">
               <span data-feather="file"></span>
               Histogram des Accidents par heures
+            </a>
+          </li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="map.html">
+              <span data-feather="file"></span>
+              Carte Chaleur
+            </a>
+          </li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="atm.html">
+              <span data-feather="file"></span>
+              Histogram des Accidents par les conditions atmosphères
             </a>
           </li>
         </ul>
@@ -81,16 +97,30 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="dashboard.js"></script>
+        <script src="../long.js"></script>
+        <script src="../lat.js"></script>
       
 <script>
 
-  var data = [{ type: 'densitymapbox', lon: [02], lat: [50]}];
+		var data = [
+			{
+				type: "scattermapbox",
+				lon: long,
+				lat: lat,
+				marker: { color: "rgba(200,100,0,0.05)", size: 4 }
+			}
+		];
 
-  var layout = { mapbox: { style: 'stamen-terrain' } };
+		var layout = {
+			dragmode: "zoom",
+			mapbox: { style: "open-street-map", center: { lat: 47, lon: 2 }, zoom: 5 },
+      margin: { r: 0, t: 0, b: 0, l: 0 },
+      height: 800
+		};
 
-  Plotly.newPlot('myDiv', data, layout);
-
-
+		Plotly.newPlot("myDiv", data, layout, {autoscale:true});
+	
+;
 </script>
         
 </body>
