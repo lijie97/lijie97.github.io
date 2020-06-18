@@ -59,7 +59,7 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="heures.html">
+            <a class="nav-link" href="heures.html">
               <span data-feather="file"></span>
               Histogram des Accidents par heures
             </a>
@@ -89,27 +89,27 @@
             </a>
           </li>
         </ul>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="prof.html">
-              <span data-feather="file"></span>
-              Histogram des Accidents par les conditions de déclivité
-            </a>
-          </li>
-        </ul>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="catv.html">
-              <span data-feather="file"></span>
-              Histogram des Accidents par les types de vehicules
-            </a>
-          </li>
-        </ul>
-       </div>
+  
+       <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="prof.html">
+            <span data-feather="file"></span>
+            Histogram des Accidents par les conditions de déclivité
+          </a>
+        </li>
+      </ul>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="catv.html">
+            <span data-feather="file"></span>
+            Histogram des Accidents par les types de vehicules
+          </a>
+        </li>
+      </ul>
+    </div>
     </nav>
   </div>
 </div>
-
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
@@ -123,51 +123,49 @@
         <script src="dashboard.js"></script>
       
 <script>
- 
-  freq = {"17":4992,"18":4806,"16":4130,"19":3697,"15":3517,"14":3167,"12":3114,"11":2933,"13":2848,"10":2614,"20":2605,"21":1857,"22":1490,"23":1257,"1":882,"0":512,"2":456}
-  grav = {"0":2.8777777778,"1":2.925452165,"2":2.9108500418,"10":2.5927673279,"11":2.5771285378,"12":2.6056073264,"13":2.6562486239,"14":2.6298335764,"15":2.6035660632,"16":2.6087906477,"17":2.5679769847,"18":2.5619287068,"19":2.6089895145,"20":2.6752105231,"21":2.7782822649,"22":2.8341917714,"23":2.8054903651}
+
+  freq = {"normale":45726,"mouillée":10247,"autre":312,"verglacée":244,"enneigée":158,"corps gras - huile":125,"flaques":90,"inondée":53,"boue":28};
+  grav = {"normale":2.6276768133,"mouillée":2.7358924431,"flaques":2.8985623782,"inondée":2.8193620845,"enneigée":2.7867892305,"boue":2.7482142857,"verglacée":3.0055562948,"corps gras - huile":3.1764,"autre":2.9573031136};
   xfreq = Object.keys(freq);
   yfreq = Object.values(freq);
-
   xgrav = Object.keys(grav);
   ygrav = Object.values(grav);
-
-
-    var trace1 = {
-      x:xfreq,
+  var trace1 = {
+      x: xfreq,
       y: yfreq,
       name: 'Nombre',
-      type: 'scatter'
+      type: 'bar'
     };
  
     var trace2 = {
-      x: xgrav,
+      x: xfreq,
       y: ygrav,
       name: 'Gravitité moyenne',
       yaxis: 'y2',
-      type: 'scatter'
+      type: 'line'
     };
 
     var data = [trace1, trace2];
 
-  var layout = {
-    title: 'Histogramme des Accidents par heures',
-    yaxis2: {
-      titlefont: { color: 'rgb(148, 103, 189)' },
-      tickfont: { color: 'rgb(148, 103, 189)' },
-      overlaying: 'y',
-      side: 'right'
-    },
-    font: {
-      family: 'Courier New, monospace',
-      size: 24
-    },
-    xref: 'paper',
-    x: 0.05,
-    showlegend: false
-  };
+    var layout = {
+      title: 'Histogramme des Accidents par les conditions atmosphériques',
+      yaxis2: {
+        titlefont: { color: 'rgb(148, 103, 189)' },
+        tickfont: { color: 'rgb(148, 103, 189)' },
+        overlaying: 'y',
+        side: 'right'
+      },
+      font: {
+          family: 'Courier New, monospace',
+          size: 24
+        },
+        xref: 'paper',
+        x: 0.05,    showlegend: false
+    };
 
+    
 Plotly.newPlot('myDiv', data, layout);
+
 </script>
         
 </body>
