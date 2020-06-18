@@ -124,8 +124,8 @@
       
 <script>
 
-  freq = {"normale":45726,"mouillée":10247,"autre":312,"verglacée":244,"enneigée":158,"corps gras - huile":125,"flaques":90,"inondée":53,"boue":28};
-  grav = {"normale":2.6276768133,"mouillée":2.7358924431,"flaques":2.8985623782,"inondée":2.8193620845,"enneigée":2.7867892305,"boue":2.7482142857,"verglacée":3.0055562948,"corps gras - huile":3.1764,"autre":2.9573031136};
+  freq = {"VL seul":60384,"Motocyclette > 125 cm3":8277,"VU seul 1,5T <= PTAC <= 3,5T avec ou sans remorque (anciennement VU seul 1,5T <= PTAC <= 3,5T)":6390,"Bicyclette":4967,"Cyclomoteur <50cm3":3967,"Scooter < 50 cm3":2740,"Motocyclette > 50 cm3 et <= 125 cm3":2479,"Scooter > 50 cm3 et <= 125 cm3":2002,"Scooter > 125 cm3":1781,"PL > 3,5T + remorque":971,"Tracteur routier + semi-remorque":906,"Autre véhicule":778,"PL seul > 7,5T":771,"Autobus":677,"PL seul 3,5T <PTCA <= 7,5T":412,"Voiturette (Quadricycle \\u00e0 moteur carross\\u00e9) (anciennement \"voiturette ou tricycle \\u00e0 moteur\")":399,"Tracteur agricole":231,"Autocar":179,"Engin spécial":172,"Quad lourd > 50 cm3 (Quadricycle à moteur non carrossé)":153,"Tramway":129,"Tracteur routier seul":54,"Quad léger <= 50 cm3 (Quadricycle à moteur non carrossé)":30,"Train":27};
+  grav = {"Autobus":2.4408918019,"Autocar":2.3291138663,"Autre véhicule":2.8064328559,"Bicyclette":2.5610172812,"Cyclomoteur <50cm3":2.5969885484,"Engin spécial":2.5084302326,"Motocyclette > 125 cm3":2.585473816,"Motocyclette > 50 cm3 et <= 125 cm3":2.6096406641,"PL > 3,5T + remorque":2.3072616501,"PL seul 3,5T <PTCA <= 7,5T":2.4259477577,"PL seul > 7,5T":2.3549626336,"Quad lourd > 50 cm3 (Quadricycle à moteur non carrossé)":2.820751634,"Quad léger <= 50 cm3 (Quadricycle \\u00e0 moteur non carross\\u00e9)":2.7333333333,"Scooter < 50 cm3":2.8085888078,"Scooter > 125 cm3":2.6417274939,"Scooter > 50 cm3 et <= 125 cm3":2.7285749964,"Tracteur agricole":2.2045454545,"Tracteur routier + semi-remorque":2.3085011322,"Tracteur routier seul":2.3194003527,"Train":2.0333333333,"Tramway":2.4140826873,"VL seul":2.5640335753,"VU seul 1,5T <= PTAC <= 3,5T avec ou sans remorque (anciennement VU seul 1,5T <= PTAC <= 3,5T)":2.5004281436,"Voiturette (Quadricycle à moteur carrossé) (anciennement \"voiturette ou tricycle à moteur\")":2.5965389665};
   xfreq = Object.keys(freq);
   yfreq = Object.values(freq);
   xgrav = Object.keys(grav);
@@ -160,7 +160,7 @@
           size: 24
         },
         xref: 'paper',
-        x: 0.05,    showlegend: false
+        x: 0.05,    showlegend: false, height : 800
     };
 
     
