@@ -6,7 +6,6 @@
     <title>Dashboard</title>
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 
-
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
 
@@ -37,13 +36,14 @@
   </button>
 </nav>
 
+
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">
+            <a class="nav-link" href="index.html">
               <span data-feather="home"></span>
               Tableau du bord 
             </a>
@@ -59,7 +59,7 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="heures.html">
+            <a class="nav-link active" href="heures.html">
               <span data-feather="file"></span>
               Histogram des Accidents par heures
             </a>
@@ -70,20 +70,11 @@
   </div>
 </div>
 
+
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-  <div style="display: flex;align-items: center;width : 100%;">
-  <div id='myDiv' style="font-size:20px; padding: 10%;text-align: justify;">
-    Pour chaque accident corporel (soit un accident survenu sur une voie ouverte à la circulation publique, impliquant au moins un véhicule et ayant fait au moins une victime ayant nécessité des soins), des saisies d’information décrivant l’accident sont effectuées par l’unité des forces de l’ordre (police, gendarmerie, etc.) qui est intervenue sur le lieu de l’accident. Ces saisies sont rassemblées dans une fiche intitulée bulletin d’analyse des accidents corporels. L’ensemble de ces fiches constitue le fichier national des accidents corporels de la circulation dit " Fichier BAAC " administré par l’Observatoire national interministériel de la sécurité routière "ONISR".
-    <br><br>
-    Les bases de données, extraites du fichier BAAC, répertorient l'intégralité des accidents corporels de la circulation intervenus durant une année précise en France métropolitaine ainsi que les départements d’Outre-mer (Guadeloupe, Guyane, Martinique, La Réunion et Mayotte depuis 2012) avec une description simplifiée. Cela comprend des informations de localisation de l’accident, telles que renseignées ainsi que des informations concernant les caractéristiques de l’accident et son lieu, les véhicules impliqués et leurs victimes.
-    <br><br>
-    Par rapport aux bases de données agrégées 2005-2010 et 2006-2011 actuellement disponibles sur le site www.data.gouv.fr, les bases de données de 2005 à 2018 sont désormais annuelles et composées de 4 fichiers (Caractéristiques – Lieux – Véhicules – Usagers ) au format csv.
-    <br><br>
-    Avertissement : Les données sur la qualification de blessé hospitalisé pour l’année 2018 ne peuvent être comparées aux années précédentes suite à des modifications de process de saisie des forces de l’ordre.
-    <br><br>
-    Ces bases occultent néanmoins certaines données spécifiques relatives aux usagers et aux véhicules et à leur comportement dans la mesure où la divulgation de ces données porterait atteinte à la protection de la vie privée des personnes physiques aisément identifiables ou ferait apparaître le comportement de telles personnes alors que la divulgation de ce comportement pourrait leur porter préjudice (avis de la CADA – 2 janvier 2012).
-    </div>
-  </div>
+
+<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script>
@@ -91,5 +82,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="dashboard.js"></script>
       
+<script>
+
+  var data = [{ type: 'densitymapbox', lon: [02], lat: [50]}];
+
+  var layout = { mapbox: { style: 'stamen-terrain' } };
+
+  Plotly.newPlot('myDiv', data, layout);
+
+
+</script>
+        
 </body>
 </html>
