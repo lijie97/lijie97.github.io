@@ -67,7 +67,7 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="map.html">
+            <a class="nav-link" href="map.html">
               <span data-feather="file"></span>
               Carte Chaleur
             </a>
@@ -83,7 +83,7 @@
         </ul>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="surf.html">
+            <a class="nav-link active" href="surf.html">
               <span data-feather="file"></span>
               Histogram des Accidents par les conditions de surface
             </a>
@@ -93,7 +93,6 @@
     </nav>
   </div>
 </div>
-
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
@@ -105,30 +104,51 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="dashboard.js"></script>
-        <script src="../long.js"></script>
-        <script src="../lat.js"></script>
       
 <script>
 
-		var data = [
-			{
-				type: "scattermapbox",
-				lon: long,
-				lat: lat,
-				marker: { color: "rgba(200,100,0,0.05)", size: 4 }
-			}
-		];
+  freq = {"normale":45726,"mouillée":10247,"autre":312,"verglacée":244,"enneigée":158,"corps gras - huile":125,"flaques":90,"inondée":53,"boue":28};
+  grav = {"normale":2.6276768133,"mouillée":2.7358924431,"flaques":2.8985623782,"inondée":2.8193620845,"enneigée":2.7867892305,"boue":2.7482142857,"verglacée":3.0055562948,"corps gras - huile":3.1764,"autre":2.9573031136};
+  xfreq = Object.keys(freq);
+  yfreq = Object.values(freq);
+  xgrav = Object.keys(grav);
+  ygrav = Object.values(grav);
+  var trace1 = {
+      x: xfreq,
+      y: yfreq,
+      name: 'Nombre',
+      type: 'bar'
+    };
+ 
+    var trace2 = {
+      x: xfreq,
+      y: ygrav,
+      name: 'Gravitité moyenne',
+      yaxis: 'y2',
+      type: 'line'
+    };
 
-		var layout = {
-			dragmode: "zoom",
-			mapbox: { style: "open-street-map", center: { lat: 47, lon: 2 }, zoom: 5 },
-      margin: { r: 0, t: 0, b: 0, l: 0 },
-      height: 800
-		};
+    var data = [trace1, trace2];
 
-		Plotly.newPlot("myDiv", data, layout, {autoscale:true});
-	
-;
+    var layout = {
+      title: 'Histogramme des Accidents par les conditions atmosphériques',
+      yaxis2: {
+        titlefont: { color: 'rgb(148, 103, 189)' },
+        tickfont: { color: 'rgb(148, 103, 189)' },
+        overlaying: 'y',
+        side: 'right'
+      },
+      font: {
+          family: 'Courier New, monospace',
+          size: 24
+        },
+        xref: 'paper',
+        x: 0.05,    showlegend: false
+    };
+
+    
+Plotly.newPlot('myDiv', data, layout);
+
 </script>
         
 </body>
